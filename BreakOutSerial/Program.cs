@@ -134,6 +134,9 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 						Thread.Sleep(5000);
 					}
 				}
+#if SERIAL_THREADED_READ
+				_Continue = false;
+#endif
 				Debug.WriteLine("Done");
 			}
 			catch (Exception ex)
