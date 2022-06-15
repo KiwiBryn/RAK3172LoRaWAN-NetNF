@@ -13,7 +13,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// https://docs.rakwireless.com/Product-Categories/WisDuo/RAK4200-Breakout-Board/AT-Command-Manual/
+// https://docs.rakwireless.com/Product-Categories/WisDuo/RAK3172-Module/AT-Command-Manual/
 //---------------------------------------------------------------------------------
 #define SERIAL_ASYNC_READ
 //#define SERIAL_THREADED_READ
