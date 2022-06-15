@@ -84,7 +84,7 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 					Debug.Write($" {port}");
 				}
 				Debug.WriteLine("");
-
+				
 				using (_SerialPort = new SerialPort(SerialPortId))
 				{
 					// set parameters
