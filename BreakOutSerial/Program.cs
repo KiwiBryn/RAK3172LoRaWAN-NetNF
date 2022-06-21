@@ -74,8 +74,8 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 			{
 				// set GPIO functions for COM2 (this is UART1 on ESP32)
 #if ESP32_WROOM
-				Configuration.SetPinFunction(Gpio.IO16, DeviceFunction.COM2_TX);
-				Configuration.SetPinFunction(Gpio.IO17, DeviceFunction.COM2_RX);
+				Configuration.SetPinFunction(Gpio.IO17, DeviceFunction.COM2_TX);
+				Configuration.SetPinFunction(Gpio.IO16, DeviceFunction.COM2_RX);
 #endif
 
 				Debug.Write("Ports:");
