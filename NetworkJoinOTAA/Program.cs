@@ -13,9 +13,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// https://docs.rakwireless.com/Product-Categories/WisDuo/RAK3172-Module/AT-Command-Manual/
+// https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#overview
 //---------------------------------------------------------------------------------
-#define SERIAL_ASYNC_READ
 #define ST_STM32F769I_DISCOVERY      // nanoff --target ST_STM32F769I_DISCOVERY --update 
 //#define ESP32_WROOM   //nanoff --target ESP32_PSRAM_REV0 --serialport COM17 --update
 
@@ -51,8 +50,8 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 			{
 				// set GPIO functions for COM2 (this is UART1 on ESP32)
 #if ESP32_WROOM
-				Configuration.SetPinFunction(Gpio.IO16, DeviceFunction.COM2_TX);
-				Configuration.SetPinFunction(Gpio.IO17, DeviceFunction.COM2_RX);
+				Configuration.SetPinFunction(Gpio.IO17, DeviceFunction.COM2_TX);
+				Configuration.SetPinFunction(Gpio.IO16, DeviceFunction.COM2_RX);
 #endif
 
 				Debug.Write("Ports:");
@@ -78,9 +77,7 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 					//serialPort.ReadBufferSize = 1024;
 					serialPort.ReadTimeout = 1000;
 
-#if SERIAL_ASYNC_READ
 					serialPort.DataReceived += SerialDevice_DataReceived;
-#endif
 
 					serialPort.Open();
 
@@ -145,7 +142,7 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 			{
 				case SerialData.Chars:
 					break;
-
+ 
 				case SerialData.WatchChar:
 					string response = serialPort.ReadExisting();
 					Debug.Write(response);
