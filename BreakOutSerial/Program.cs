@@ -84,7 +84,7 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 					Debug.Write($" {port}");
 				}
 				Debug.WriteLine("");
-				
+
 				using (_SerialPort = new SerialPort(SerialPortId))
 				{
 					// set parameters
@@ -98,7 +98,7 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 
 					//_SerialPort.ReadBufferSize = 128; 
 					//_SerialPort.ReadBufferSize = 256; 
-					_SerialPort.ReadBufferSize = 512; 
+					_SerialPort.ReadBufferSize = 512;
 					//_SerialPort.ReadBufferSize = 1024;
 					_SerialPort.ReadTimeout = 1000;
 
@@ -121,6 +121,14 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 					for (int i = 0; i < 5; i++)
 					{
 						string atCommand;
+						//atCommand = "012345678901234567890123456789"; //broken
+						//atCommand = "01234567890123456789"; //broken
+						//atCommand = "01234"; // Works
+						//atCommand = "0123456789"; // broken
+						//atCommand = "012345678"; // broken
+						//atCommand = "01234567"; // broken
+						//atCommand = "0123456"; // broken
+						//atCommand = "012345"; // works
 						atCommand = "AT+VER=?";
 						//atCommand = "AT+SN=?"; // Empty response?
 						//atCommand = "AT+HWMODEL=?";
