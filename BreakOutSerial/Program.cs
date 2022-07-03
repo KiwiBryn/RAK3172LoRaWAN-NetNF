@@ -18,7 +18,7 @@
 #define SERIAL_ASYNC_READ
 //#define SERIAL_THREADED_READ
 #define ST_STM32F769I_DISCOVERY      // nanoff --target ST_STM32F769I_DISCOVERY --update 
-//#define ESP32_WROOM   //nanoff --target ESP32_PSRAM_REV0 --serialport COM17 --update
+//#define ESP32_WROOM   // nanoff --target ESP32_REV0 --serialport COM17 --update
 // May 2022 Still experiencing issues with ComPort assignments
 //#define NETDUINO3_WIFI   // nanoff --target NETDUINO3_WIFI --update
 //#define ST_NUCLEO64_F091RC // nanoff --target ST_NUCLEO64_F091RC --update 
@@ -88,18 +88,12 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 				using (_SerialPort = new SerialPort(SerialPortId))
 				{
 					// set parameters
-					//_SerialPort.BaudRate = 9600;
 					_SerialPort.BaudRate = 115200;
 					_SerialPort.Parity = Parity.None;
 					_SerialPort.DataBits = 8;
 					_SerialPort.StopBits = StopBits.One;
 					_SerialPort.Handshake = Handshake.None;
 					_SerialPort.NewLine = "\r\n";
-
-					//_SerialPort.ReadBufferSize = 128; 
-					//_SerialPort.ReadBufferSize = 256; 
-					_SerialPort.ReadBufferSize = 512;
-					//_SerialPort.ReadBufferSize = 1024;
 					_SerialPort.ReadTimeout = 1000;
 
 					//_SerialPort.WatchChar = '\n'; // May 2022 WatchChar event didn't fire github issue https://github.com/nanoframework/Home/issues/1035
@@ -121,20 +115,11 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 					for (int i = 0; i < 5; i++)
 					{
 						string atCommand;
-						//atCommand = "012345678901234567890123456789"; //broken
-						//atCommand = "01234567890123456789"; //broken
-						//atCommand = "01234"; // Works
-						//atCommand = "0123456789"; // broken
-						//atCommand = "012345678"; // broken
-						//atCommand = "01234567"; // broken
-						//atCommand = "0123456"; // broken
-						//atCommand = "012345"; // works
 						atCommand = "AT+VER=?";
 						//atCommand = "AT+SN=?"; // Empty response?
 						//atCommand = "AT+HWMODEL=?";
 						//atCommand = "AT+HWID=?";
 						//atCommand = "AT+DEVEUI=?";
-						//atCommand = "AT+BAUD=9600";
 						Debug.WriteLine("");
 						Debug.WriteLine($"{i} TX:{atCommand} bytes:{atCommand.Length}--------------------------------");
 						_SerialPort.WriteLine(atCommand);
