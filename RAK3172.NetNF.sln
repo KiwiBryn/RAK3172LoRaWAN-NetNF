@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "00.BreakOutSerial", "BreakOutSerial\00.BreakOutSerial.nfproj", "{8A53AAE5-1144-4EC2-A070-7375F079EF87}"
 EndProject
-Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "NetworkJoinOTAA", "NetworkJoinOTAA\NetworkJoinOTAA.nfproj", "{BAC98288-F9AC-4EA0-958F-161782E5A154}"
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "01.NetworkJoinOTAA", "NetworkJoinOTAA\01.NetworkJoinOTAA.nfproj", "{BAC98288-F9AC-4EA0-958F-161782E5A154}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
