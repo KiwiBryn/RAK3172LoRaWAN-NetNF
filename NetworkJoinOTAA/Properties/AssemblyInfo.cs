@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CSharp.BlankApplication")]
+[assembly: AssemblyTitle("devMobile.IoT.LoRaWAN.RAK3172 NetworkJoinOTAA")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CSharp.BlankApplication")]
-[assembly: AssemblyCopyright("Copyright © HP Inc. 2022")]
+[assembly: AssemblyProduct("devMobile RAK3172 NetworkJoinOTAA")]
+[assembly: AssemblyCopyright("Copyright © July 2022 devMobile Software")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

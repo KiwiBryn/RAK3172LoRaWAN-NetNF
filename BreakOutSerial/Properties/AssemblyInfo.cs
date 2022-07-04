@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("devMobile.IoT.LoRaWAN.RAK4200 BreakOutSerial")]
+[assembly: AssemblyTitle("devMobile.IoT.LoRaWAN.RAK3172 BreakOutSerial")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("devMobile RAK4200 BreakOutSerial")]
-[assembly: AssemblyCopyright("Copyright © May 2022 devMobile Software")]
+[assembly: AssemblyProduct("devMobile RAK3172 BreakOutSerial")]
+[assembly: AssemblyCopyright("Copyright © June 2022 devMobile Software")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
