@@ -16,7 +16,7 @@
 // https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#overview
 //---------------------------------------------------------------------------------
 #define ST_STM32F769I_DISCOVERY      // nanoff --target ST_STM32F769I_DISCOVERY --update 
-//#define ESP32_WROOM   //nanoff --target ESP32_PSRAM_REV0 --serialport COM17 --update
+//#define ESP32_WROOM   //nanoff --target ESP32_REV0 --serialport COM17 --update
 
 namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 {
@@ -70,11 +70,6 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 					serialPort.StopBits = StopBits.One;
 					serialPort.Handshake = Handshake.None;
 					serialPort.NewLine = "\r\n";
-
-					//serialPort.ReadBufferSize = 128; 
-					//serialPort.ReadBufferSize = 256; 
-					serialPort.ReadBufferSize = 512;
-					//serialPort.ReadBufferSize = 1024;
 					serialPort.ReadTimeout = 1000;
 
 					serialPort.DataReceived += SerialDevice_DataReceived;
@@ -95,7 +90,7 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 
 					// Set the Region to AS923
 					Console.WriteLine("Set Region");
-					serialPort.WriteLine("AT+BAND=8-1");
+					serialPort.WriteLine("AT+BAND=8");
 
 					// Set the JoinMode
 					Console.WriteLine("Set Join mode");
