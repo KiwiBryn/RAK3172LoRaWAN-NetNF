@@ -81,8 +81,8 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 
 					serialPort.ReadExisting(); // Running at 115K2 this was necessary
 
-					// Set the devEUI
-					Console.WriteLine("Set Dev Eui");
+					// Set the Device EUI
+					Console.WriteLine("Set Device EUI");
 					serialPort.WriteLine($"AT+DEVEUI={DevEui}");
 
 					// Set the Working mode to LoRaWAN
@@ -95,19 +95,19 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 
 					// Set the JoinMode
 					Console.WriteLine("Set Join mode");
-					serialPort.WriteLine("AT+NJM=1");
+					serialPort.WriteLine("AT+NJM=0");
 
 					// Set the DevAddress
-					Console.WriteLine("Set DevAddress");
-					serialPort.WriteLine($"AT+={DevAddress}");
+					Console.WriteLine("Set Device Address");
+					serialPort.WriteLine($"AT+DEVADDR={DevAddress}");
 
-					// Set the NwksKey
+					// Set the Network Session Key
 					Console.WriteLine("Set NwksKey");
-					serialPort.WriteLine($"AT+={NwksKey}");
+					serialPort.WriteLine($"AT+NWKSKEY={NwksKey}");
 
-					// Set the AppsKey
+					// Set the Application Session Key
 					Console.WriteLine("Set AppsKey");
-					serialPort.WriteLine($"AT+={AppsKey}");
+					serialPort.WriteLine($"AT+APPSKEY={AppsKey}");
 
 					// Set the Confirm flag
 					Console.WriteLine("Set Confirm off");
