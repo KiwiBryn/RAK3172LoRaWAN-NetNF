@@ -5,7 +5,8 @@ A C# library for [LoRaWAN](https://lora-alliance.org/about-lorawan) connectivity
 This repository has the source code for the series of blog posts written as I work on the library
 
 01. [Basic connectivity](http://blog.devmobile.co.nz/2022/06/11/net-nanoframework-rak3172-lorawan-library-basic-connectivity/)
-02. [Nasty OTAA Connect](http://blog.devmobile.co.nz/2022/07/04/net-nanoframework-rak3172-lorawan-library-otaa-join/)
+02. [Nasty OTAA Join](http://blog.devmobile.co.nz/2022/07/04/net-nanoframework-rak3172-lorawan-library-otaa-join/)
+03. [Nasty ABP Join](http://blog.devmobile.co.nz/2022/07/05/net-nanoframework-rak3172-lorawan-library-abp-join/)
 
 ![FTDI Based test harness](RAK3172FTDITestrig.jpg)
 
