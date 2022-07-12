@@ -120,7 +120,7 @@ namespace devMobile.IoT.LoRaWAN
 					result = device.DeviceEui(Config.devEui);
 					if (result != Result.Success)
 					{
-						Debug.WriteLine($"ADR on failed {result}");
+						Debug.WriteLine($"DeviceEUI set failed {result}");
 						return;
 					}
 #endif
@@ -230,10 +230,11 @@ namespace devMobile.IoT.LoRaWAN
 		}
 
 #if CONFIRMED
-      static void OnMessageConfirmationHandler(int rssi, int snr)
-      {
-         Debug.WriteLine($"{DateTime.UtcNow:hh:mm:ss} Send Confirm RSSI:{rssi} SNR:{snr}");
-      }
+		static void OnMessageConfirmationHandler(bool confirmed)
+		{
+			Debug.WriteLine($"{DateTime.UtcNow:hh:mm:ss} Send Confirmed {confirmed}");
+		}
+
 #endif
 
 		static void OnReceiveMessageHandler(byte port, int rssi, int snr, string payloadBcd)
