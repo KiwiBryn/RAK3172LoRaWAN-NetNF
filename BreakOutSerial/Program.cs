@@ -17,8 +17,8 @@
 //---------------------------------------------------------------------------------
 #define SERIAL_ASYNC_READ
 //#define SERIAL_THREADED_READ
-#define ST_STM32F769I_DISCOVERY      // nanoff --target ST_STM32F769I_DISCOVERY --update 
-//#define ESP32_WROOM   // nanoff --target ESP32_REV0 --serialport COM17 --update
+//#define ST_STM32F769I_DISCOVERY      // nanoff --target ST_STM32F769I_DISCOVERY --update 
+#define ESP32_WROOM   // nanoff --target ESP32_REV0 --serialport COM17 --update
 // May 2022 Still experiencing issues with ComPort assignments
 //#define NETDUINO3_WIFI   // nanoff --target NETDUINO3_WIFI --update
 //#define ST_NUCLEO64_F091RC // nanoff --target ST_NUCLEO64_F091RC --update 
@@ -123,6 +123,7 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 						//atCommand = "AT+APPEUI=?";
 						//atCommand = "AT+APPKEY=?";
 						//atCommand = "ATR";
+						//atCommand = "AT+SLEEP=4000";
 						Debug.WriteLine("");
 						Debug.WriteLine($"{i} TX:{atCommand} bytes:{atCommand.Length}--------------------------------");
 						_SerialPort.WriteLine(atCommand);
