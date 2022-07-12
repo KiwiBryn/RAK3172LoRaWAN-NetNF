@@ -238,13 +238,13 @@ namespace devMobile.IoT.LoRaWAN
 
 			// Set the Working mode to LoRaWAN, not/never going todo P2P with this library.
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+NWM=1");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+NWM=1");
 #endif
 			Result result = SendCommand("Current Work Mode: LoRaWAN.", "AT+NWM=1", CommandTimeoutDefault);
 			if (result != Result.Success)
 			{
 #if DIAGNOSTICS
-            Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+NWM=1 failed {result}");
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+NWM=1 failed {result}");
 #endif
 				return result;
 			}
@@ -314,13 +314,13 @@ namespace devMobile.IoT.LoRaWAN
 
 			// Set the class
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} {command}");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} {command}");
 #endif
 			Result result = SendCommand("OK", command, CommandTimeoutDefault);
 			if (result != Result.Success)
 			{
 #if DIAGNOSTICS
-            Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} {command} failed {result}");
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} {command} failed {result}");
 #endif
 				return result;
 			}
@@ -336,13 +336,13 @@ namespace devMobile.IoT.LoRaWAN
 		{
             // Set the confirmation type
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+CFM=0");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+CFM=0");
 #endif
             Result result = SendCommand("OK", "AT+CFM=0", CommandTimeoutDefault);
             if (result != Result.Success)
 			{
 #if DIAGNOSTICS
-            Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+CFM=0 failed {result}");
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+CFM=0 failed {result}");
 #endif
 				return result;
 			}
@@ -358,13 +358,13 @@ namespace devMobile.IoT.LoRaWAN
 		{
 			// Set the confirmation type
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+CFM=1");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+CFM=1");
 #endif
 			Result result = SendCommand("OK", "AT+CFM=1", CommandTimeoutDefault);
 			if (result != Result.Success)
 			{
 #if DIAGNOSTICS
-            Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+CFM=1 failed {result}");
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+CFM=1 failed {result}");
 #endif
 				return result;
 			}
@@ -387,13 +387,13 @@ namespace devMobile.IoT.LoRaWAN
 			}
 
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+BAND={band}");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+BAND={band}");
 #endif
 			Result result = SendCommand("OK", $"AT+BAND={band}", CommandTimeoutDefault);
 			if (result != Result.Success)
 			{
 #if DIAGNOSTICS
-            Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+BAND failed {result}");
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+BAND failed {result}");
 #endif
 				return result;
 			}
@@ -408,13 +408,13 @@ namespace devMobile.IoT.LoRaWAN
 		public Result AdrOff()
 		{
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+ADR=0");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+ADR=0");
 #endif
             Result result = SendCommand("OK", "AT+ADR=0", CommandTimeoutDefault);
             if (result != Result.Success)
 			{
 #if DIAGNOSTICS
-            Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+ADR=0 failed {result}");
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+ADR=0 failed {result}");
 #endif
 				return result;
 			}
@@ -429,13 +429,46 @@ namespace devMobile.IoT.LoRaWAN
 		public Result AdrOn()
 		{
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+ADR=1");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+ADR=1");
 #endif
             Result result = SendCommand("OK", "AT+ADR=1", CommandTimeoutDefault);
             if (result != Result.Success)
 			{
 #if DIAGNOSTICS
-            Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+ADR=1 failed {result}");
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+ADR=1 failed {result}");
+#endif
+				return result;
+			}
+
+			return Result.Success;
+		}
+		public Result Reset()
+        {
+#if DIAGNOSTICS
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} ATR");
+#endif
+			Result result = SendCommand("OK", "ATR", CommandTimeoutDefault);
+			if (result != Result.Success)
+			{
+#if DIAGNOSTICS
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} ATR failed {result}");
+#endif
+				return result;
+			}
+
+			return Result.Success;
+		}
+
+		public Result Sleep(TimeSpan period)
+		{
+#if DIAGNOSTICS
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+SLEEP");
+#endif
+			Result result = SendCommand("OK", "AT+SLEEP", CommandTimeoutDefault);
+			if (result != Result.Success)
+			{
+#if DIAGNOSTICS
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+SLEEP failed {result}");
 #endif
 				return result;
 			}
@@ -488,33 +521,33 @@ namespace devMobile.IoT.LoRaWAN
 
 			// Set the network join mode to ABP
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+NJM=0");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+NJM=0");
 #endif
 			result = SendCommand("OK", "AT+NJM=0", CommandTimeoutDefault);
 			if (result != Result.Success)
 			{
 #if DIAGNOSTICS
-            Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+NJM=0 failed {result}" );
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+NJM=0 failed {result}" );
 #endif
 				return result;
 			}
 
 			// set the devAddr
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+DEVADDR={devAddr}");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+DEVADDR={devAddr}");
 #endif
 			result = SendCommand("OK", $"AT+DEVADDR={devAddr}", CommandTimeoutDefault);
 			if (result != Result.Success)
 			{
 #if DIAGNOSTICS
-            Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+DEVADDR failed {result}");
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+DEVADDR failed {result}");
 #endif
 				return result;
 			}
 
 			// Set the nwsKey
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+NWKSKEY={nwksKey}");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+NWKSKEY={nwksKey}");
 #endif
 			result = SendCommand("OK", $"AT+NWKSKEY={nwksKey}", CommandTimeoutDefault);
 			if (result != Result.Success)
@@ -527,7 +560,7 @@ namespace devMobile.IoT.LoRaWAN
 
 			// Set the appsKey
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+APPSKEY={appsKey}");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+APPSKEY={appsKey}");
 #endif
 			result = SendCommand("OK", $"AT+APPSKEY={appsKey}", CommandTimeoutDefault);
 			if (result != Result.Success)
@@ -575,39 +608,39 @@ namespace devMobile.IoT.LoRaWAN
 
 			// Set the Network Join Mode to OTAA
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+NJM=1");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+NJM=1");
 #endif
 			result = SendCommand("OK", "AT+NJM=1", CommandTimeoutDefault);
 			if (result != Result.Success)
 			{
 #if DIAGNOSTICS
-            Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+NJM=1 failed {result}");
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+NJM=1 failed {result}");
 #endif
 				return result;
 			}
 
 			// Set the appEUI
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+APPEUI={joinEui}");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+APPEUI={joinEui}");
 #endif
 			result = SendCommand("OK", $"AT+APPEUI={joinEui}", CommandTimeoutDefault);
 			if (result != Result.Success)
 			{
 #if DIAGNOSTICS
-            Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+APPEUI= failed {result}");
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+APPEUI= failed {result}");
 #endif
 				return result;
 			}
 
 			// Set the appKey
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+APPKEY={appKey}");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+APPKEY={appKey}");
 #endif
 			result = SendCommand("OK", $"AT+APPKEY={appKey}", CommandTimeoutDefault);
 			if (result != Result.Success)
 			{
 #if DIAGNOSTICS
-            Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+APPKEY= failed {result}");
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+APPKEY= failed {result}");
 #endif
 				return result;
 			}
@@ -629,13 +662,13 @@ namespace devMobile.IoT.LoRaWAN
 			}
 
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+JOIN");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+JOIN");
 #endif
 			Result result = SendCommand("OK", $"AT+JOIN=1:0:{retryIntervalSeconds}:{JoinAttempts}", timeout);
 			if (result != Result.Success)
 			{
 #if DIAGNOSTICS
-            Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+JOIN failed {result}");
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+JOIN failed {result}");
 #endif
 				return result;
 			}
@@ -671,13 +704,13 @@ namespace devMobile.IoT.LoRaWAN
 
 			// Send message the network
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+SEND={port}:payload {payload}");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+SEND={port}:payload {payload}");
 #endif
 			Result result = SendCommand("OK", $"AT+SEND={port}:{payload}", timeout);
 			if (result != Result.Success)
 			{
 #if DIAGNOSTICS
-            Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+SEND failed {result}");
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+SEND failed {result}");
 #endif
 				return result;
 			}
@@ -715,13 +748,13 @@ namespace devMobile.IoT.LoRaWAN
 
 			// Send message the network
 #if DIAGNOSTICS
-         Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+SEND=:{port} payload {payloadHex}");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+SEND=:{port} payload {payloadHex}");
 #endif
 			Result result = SendCommand("OK", $"AT+SEND={port}:{payloadHex}", timeout);
 			if (result != Result.Success)
 			{
 #if DIAGNOSTICS
-            Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+SEND failed {result}");
+				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+SEND failed {result}");
 #endif
 				return result;
 			}
