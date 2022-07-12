@@ -20,7 +20,6 @@
 // Optional definitions
 //		DEVICE_DEVEUI_SET
 //		DEVICE_FACTORY_SETTINGS
-//    CONFIRMED For confirmed messages
 //
 //---------------------------------------------------------------------------------
 //#define ST_STM32F769I_DISCOVERY      // nanoff --target ST_STM32F769I_DISCOVERY --update 
@@ -31,7 +30,8 @@
 #define PAYLOAD_BYTES
 //#define OTAA
 //#define ABP
-//#define CONFIRMED or UNCONFIRMED
+//#define CONFIRMED
+//#define UNCONFIRMED
 //#define REGION_SET
 //#define ADR_SET
 namespace devMobile.IoT.LoRaWAN
@@ -232,9 +232,15 @@ namespace devMobile.IoT.LoRaWAN
 #if CONFIRMED
 		static void OnMessageConfirmationHandler(bool confirmed)
 		{
-			Debug.WriteLine($"{DateTime.UtcNow:hh:mm:ss} Send Confirmed {confirmed}");
+			if (confirmed)
+			{
+				Debug.WriteLine($"{DateTime.UtcNow:hh:mm:ss} Send Confirmed OK");
+			}
+			else
+			{
+				Debug.WriteLine($"{DateTime.UtcNow:hh:mm:ss} Send Confirmed failed");
+			}
 		}
-
 #endif
 
 		static void OnReceiveMessageHandler(byte port, int rssi, int snr, string payloadBcd)

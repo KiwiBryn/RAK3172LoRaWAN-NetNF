@@ -836,14 +836,14 @@ namespace devMobile.IoT.LoRaWAN
 					}
 
 					// Applicable only if confirmed messages enabled 
-					if (line.StartsWith("+EVT:SEND CONFIRMED OK"))
+					if (line.StartsWith("+EVT:SEND_CONFIRMED_OK"))
 					{
 						OnMessageConfirmation?.Invoke(true);
 
 						continue;
 					}
 
-					if (line.StartsWith("+EVT:SEND CONFIRMED FAILED"))
+					if (line.StartsWith("+EVT:SEND_CONFIRMED_FAILED"))
 					{
 						OnMessageConfirmation?.Invoke(false);
 
