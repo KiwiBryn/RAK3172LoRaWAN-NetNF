@@ -120,6 +120,9 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 						//atCommand = "AT+HWMODEL=?";
 						//atCommand = "AT+HWID=?";
 						//atCommand = "AT+DEVEUI=?";
+						//atCommand = "AT+APPEUI=?";
+						//atCommand = "AT+APPKEY=?";
+						//atCommand = "ATR";
 						Debug.WriteLine("");
 						Debug.WriteLine($"{i} TX:{atCommand} bytes:{atCommand.Length}--------------------------------");
 						_SerialPort.WriteLine(atCommand);
