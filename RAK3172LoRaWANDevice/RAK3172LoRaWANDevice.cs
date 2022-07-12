@@ -442,7 +442,7 @@ namespace devMobile.IoT.LoRaWAN
 
 			return Result.Success;
 		}
-		public Result Reset()
+		public Result FactoryReset()
         {
 #if DIAGNOSTICS
 			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} ATR");
