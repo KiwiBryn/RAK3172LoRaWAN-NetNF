@@ -62,7 +62,7 @@ namespace devMobile.IoT.LoRaWAN
 #endif
 		private const byte MessagePort = 1;
 		private static readonly TimeSpan MessageSendTimerDue = new TimeSpan(0, 0, 15);
-		private static readonly TimeSpan MessageSendTimerPeriod = new TimeSpan(0, 1, 0);
+		private static readonly TimeSpan MessageSendTimerPeriod = new TimeSpan(0, 5, 0);
 		private static Timer MessageSendTimer;
 #if PAYLOAD_BCD
 		private const string PayloadBcd = "48656c6c6f204c6f526157414e"; // Hello LoRaWAN in BCD
