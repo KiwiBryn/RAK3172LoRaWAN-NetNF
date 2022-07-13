@@ -462,9 +462,9 @@ namespace devMobile.IoT.LoRaWAN
 		public Result Sleep(TimeSpan period)
 		{
 #if DIAGNOSTICS
-			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+SLEEP");
+			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+SLEEP {period.TotalMilliseconds:f0} mSec");
 #endif
-			Result result = SendCommand("OK", "AT+SLEEP", CommandTimeoutDefault);
+			Result result = SendCommand("OK", $"AT+SLEEP={period.TotalMilliseconds:f0}", CommandTimeoutDefault);
 			if (result != Result.Success)
 			{
 #if DIAGNOSTICS
