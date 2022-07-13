@@ -806,6 +806,12 @@ namespace devMobile.IoT.LoRaWAN
 #if DIAGNOSTICS
 					Debug.WriteLine($" Line :{line} ResponseExpected:{ATCommandExpectedResponse} Response:{Response}");
 #endif
+					// Ignore blank lines
+					if (line.Trim() == string.Empty)
+					{
+						continue;
+					}
+
 					if (ATCommandExpectedResponse != string.Empty)
 					{
 						int successIndex = line.IndexOf(ATCommandExpectedResponse);
