@@ -34,6 +34,7 @@
 //#define UNCONFIRMED
 //#define REGION_SET
 //#define ADR_SET
+//#define SLEEP
 namespace devMobile.IoT.LoRaWAN
 {
     using System;
@@ -56,6 +57,9 @@ namespace devMobile.IoT.LoRaWAN
 		private const string Band = "8-1";
 		private static readonly TimeSpan JoinTimeOut = new TimeSpan(0, 0, 10);
 		private static readonly TimeSpan SendTimeout = new TimeSpan(0, 0, 10);
+#if SLEEP
+		private static readonly TimeSpan SleepTimeOut = new TimeSpan(0, 0, 30);
+#endif
 		private const byte MessagePort = 1;
 		private static readonly TimeSpan MessageSendTimerDue = new TimeSpan(0, 0, 15);
 		private static readonly TimeSpan MessageSendTimerPeriod = new TimeSpan(0, 1, 0);
@@ -203,7 +207,7 @@ namespace devMobile.IoT.LoRaWAN
 
 		private static void OnJoinCompletionHandler(bool result)
 		{
-			Console.WriteLine($"{DateTime.UtcNow:hh:mm:ss} Join finished:{result}");
+			Debug.WriteLine($"{DateTime.UtcNow:hh:mm:ss} Join finished:{result}");
 
 			if (result)
 			{
@@ -216,17 +220,27 @@ namespace devMobile.IoT.LoRaWAN
 			Rak3172LoRaWanDevice device = (Rak3172LoRaWanDevice)state;
 
 #if PAYLOAD_HEX
-			Console.WriteLine($"{DateTime.UtcNow:hh:mm:ss} port:{MessagePort} payload HEX:{PayloadHex}");
+			Debug.WriteLine($"{DateTime.UtcNow:hh:mm:ss} port:{MessagePort} payload HEX:{PayloadHex}");
 			Result result = device.Send(MessagePort, PayloadHex, SendTimeout);
 #endif
 #if PAYLOAD_BYTES
-			Console.WriteLine($"{DateTime.UtcNow:hh:mm:ss} port:{MessagePort} payload bytes:{Rak3172LoRaWanDevice.BytesToHex(PayloadBytes)}");
+			Debug.WriteLine($"{DateTime.UtcNow:hh:mm:ss} port:{MessagePort} payload bytes:{Rak3172LoRaWanDevice.BytesToHex(PayloadBytes)}");
 			Result result = device.Send(MessagePort, PayloadBytes, SendTimeout);
 #endif
 			if (result != Result.Success)
 			{
-				Console.WriteLine($"Send failed {result}");
+				Debug.WriteLine($"Send failed {result}");
 			}
+
+#if SLEEP
+			Debug.WriteLine($"{DateTime.UtcNow:hh:mm:ss} Sleep");
+			result = device.Sleep(SleepTimeOut);
+			if (result != Result.Success)
+			{
+				Debug.WriteLine($"Sleep failed {result}");
+				return;
+			}
+#endif
 		}
 
 #if CONFIRMED
