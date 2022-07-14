@@ -150,6 +150,7 @@ namespace devMobile.IoT.LoRaWAN
 		public const ushort JoinRetryIntervalMinimum = 7;
 
 		private readonly TimeSpan CommandTimeoutDefault = new TimeSpan(0, 0, 5);
+		private readonly TimeSpan SleepExtensionDefault = new TimeSpan(0, 0, 0, 100);
 
 		private SerialPort serialDevice = null;
 
@@ -442,6 +443,7 @@ namespace devMobile.IoT.LoRaWAN
 
 			return Result.Success;
 		}
+
 		public Result FactoryReset()
         {
 #if DIAGNOSTICS
@@ -460,11 +462,16 @@ namespace devMobile.IoT.LoRaWAN
 		}
 
 		public Result Sleep(TimeSpan period)
+        {
+			return Sleep(period, SleepExtensionDefault);
+		}
+
+		public Result Sleep(TimeSpan period, TimeSpan extension)
 		{
 #if DIAGNOSTICS
 			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+SLEEP {period.TotalMilliseconds:f0} mSec");
 #endif
-			Result result = SendCommand("OK", $"AT+SLEEP={period.TotalMilliseconds:f0}", CommandTimeoutDefault);
+			Result result = SendCommand("OK", $"AT+SLEEP={period.TotalMilliseconds:f0}", period.Add(extension));
 			if (result != Result.Success)
 			{
 #if DIAGNOSTICS

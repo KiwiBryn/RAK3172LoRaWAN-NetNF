@@ -58,7 +58,7 @@ namespace devMobile.IoT.LoRaWAN
 		private static readonly TimeSpan JoinTimeOut = new TimeSpan(0, 0, 10);
 		private static readonly TimeSpan SendTimeout = new TimeSpan(0, 0, 10);
 #if SLEEP
-		private static readonly TimeSpan SleepTimeOut = new TimeSpan(0, 0, 30);
+		private static readonly TimeSpan SleepPeriod = new TimeSpan(0, 4, 0);
 #endif
 		private const byte MessagePort = 1;
 		private static readonly TimeSpan MessageSendTimerDue = new TimeSpan(0, 0, 15);
@@ -233,8 +233,10 @@ namespace devMobile.IoT.LoRaWAN
 			}
 
 #if SLEEP
-			Debug.WriteLine($"{DateTime.UtcNow:hh:mm:ss} Sleep");
-			result = device.Sleep(SleepTimeOut);
+			Thread.Sleep(7500); //10000 Works 5000 to short
+
+			Debug.WriteLine($"{DateTime.UtcNow:hh:mm:ss} Sleep period:{SleepPeriod:hh:mm:ss}");
+			result = device.Sleep(SleepPeriod);
 			if (result != Result.Success)
 			{
 				Debug.WriteLine($"Sleep failed {result}");
