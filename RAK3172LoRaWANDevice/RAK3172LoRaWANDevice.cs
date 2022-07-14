@@ -14,7 +14,7 @@
 // limitations under the License.
 //
 //---------------------------------------------------------------------------------
-#define DIAGNOSTICS
+//#define DIAGNOSTICS
 namespace devMobile.IoT.LoRaWAN
 {
 	using System;
