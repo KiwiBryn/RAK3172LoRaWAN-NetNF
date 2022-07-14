@@ -125,7 +125,7 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 						//atCommand = "ATR";
 						//atCommand = "AT+SLEEP=4000";
 						Debug.WriteLine("");
-						Debug.WriteLine($"{i} TX:{atCommand} bytes:{atCommand.Length}--------------------------------");
+						Debug.WriteLine($"{DateTime.UtcNow:hh:mm:ss} {i} TX:{atCommand} bytes:{atCommand.Length}--------------------------------");
 						_SerialPort.WriteLine(atCommand);
 
 						Thread.Sleep(5000);
@@ -154,6 +154,7 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 
 				case SerialData.WatchChar:
 					string response = serialPort.ReadExisting();
+					//Debug.Write($"{DateTime.UtcNow:hh:mm:ss} RX:{response} bytes:{response.Length}");
 					Debug.Write(response);
 					break;
 				default:
