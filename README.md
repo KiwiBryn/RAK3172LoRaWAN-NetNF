@@ -7,6 +7,8 @@ This repository has the source code for the series of blog posts written as I wo
 01. [Basic connectivity](http://blog.devmobile.co.nz/2022/06/11/net-nanoframework-rak3172-lorawan-library-basic-connectivity/)
 02. [Nasty OTAA Join](http://blog.devmobile.co.nz/2022/07/04/net-nanoframework-rak3172-lorawan-library-otaa-join/)
 03. [Nasty ABP Join](http://blog.devmobile.co.nz/2022/07/05/net-nanoframework-rak3172-lorawan-library-abp-join/)
+04. [Factory Reset](http://blog.devmobile.co.nz/2022/07/13/net-nanoframework-rak3172-factory-reset/)
+05. [RAK3172 and Sparkfun ESP32 Thing Sleep](http://blog.devmobile.co.nz/2022/07/14/net-nanoframework-rak3172-sleep/)
 
 ![FTDI Based test harness](RAK3172FTDITestrig.jpg)
 
