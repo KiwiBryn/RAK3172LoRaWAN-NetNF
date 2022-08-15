@@ -124,6 +124,7 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 						//atCommand = "AT+APPKEY=?";
 						//atCommand = "ATR";
 						//atCommand = "AT+SLEEP=4000";
+						//atCommand = "AT+ATM";
 						Debug.WriteLine("");
 						Debug.WriteLine($"{DateTime.UtcNow:hh:mm:ss} {i} TX:{atCommand} bytes:{atCommand.Length}--------------------------------");
 						_SerialPort.WriteLine(atCommand);
