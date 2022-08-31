@@ -18,7 +18,8 @@
 #define SERIAL_ASYNC_READ
 //#define SERIAL_THREADED_READ
 #define ST_STM32F769I_DISCOVERY      // nanoff --target ST_STM32F769I_DISCOVERY --update 
-//#define ESP32_WROOM   // nanoff --target ESP32_REV0 --serialport COM17 --update
+//#define SPARKFUN_ESP32_THING_PLUS   // nanoff --platform esp32 --serialport COM4 --update
+//#define RAK_WISBLOCK_RAK2305 // nanoff --update --target ESP32_PSRAM_REV0 --serialport COM4
 // May 2022 Still experiencing issues with ComPort assignments
 //#define NETDUINO3_WIFI   // nanoff --target NETDUINO3_WIFI --update
 //#define ST_NUCLEO64_F091RC // nanoff --target ST_NUCLEO64_F091RC --update 
@@ -30,18 +31,21 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 	using System.Diagnostics;
 	using System.IO.Ports;
 	using System.Threading;
-#if ESP32_WROOM
-	using global::nanoFramework.Hardware.Esp32; //need NuGet nanoFramework.Hardware.Esp32
+#if SPARKFUN_ESP32_THING_PLUS || RAK_WISBLOCK_RAK2305
+   using global::nanoFramework.Hardware.Esp32; //need NuGet nanoFramework.Hardware.Esp32
 #endif
 
-	public class Program
+   public class Program
 	{
 		private static SerialPort _SerialPort;
 #if SERIAL_THREADED_READ
 		private static Boolean _Continue = true;
 #endif
-#if ESP32_WROOM
+#if SPARKFUN_ESP32_THING_PLUS
 		private const string SerialPortId = "COM2";
+#endif
+#if RAK_WISBLOCK_RAK2305
+      private const string SerialPortId = "COM2";
 #endif
 #if NETDUINO3_WIFI
       private const string SerialPortId = "COM3";
@@ -62,7 +66,7 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 		private const string SerialPortId = "COM6";
 #endif
 
-		public static void Main()
+      public static void Main()
 		{
 #if SERIAL_THREADED_READ
 			Thread readThread = new Thread(SerialPortProcessor);
@@ -72,13 +76,17 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 
 			try
 			{
-				// set GPIO functions for COM2 (this is UART1 on ESP32)
-#if ESP32_WROOM
+            // set GPIO functions for COM2 (this is UART1 on ESP32)
+#if SPARKFUN_ESP32_THING_PLUS
 				Configuration.SetPinFunction(Gpio.IO17, DeviceFunction.COM2_TX);
 				Configuration.SetPinFunction(Gpio.IO16, DeviceFunction.COM2_RX);
 #endif
+#if RAK_WISBLOCK_RAK2305
+            Configuration.SetPinFunction(Gpio.IO21, DeviceFunction.COM2_TX);
+				Configuration.SetPinFunction(Gpio.IO19, DeviceFunction.COM2_RX);
+#endif
 
-				Debug.Write("Ports:");
+            Debug.Write("Ports:");
 				foreach (string port in SerialPort.GetPortNames())
 				{
 					Debug.Write($" {port}");
@@ -96,10 +104,10 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 					_SerialPort.NewLine = "\r\n";
 					_SerialPort.ReadTimeout = 1000;
 
-					//_SerialPort.WatchChar = '\n'; // May 2022 WatchChar event didn't fire github issue https://github.com/nanoframework/Home/issues/1035
+               //_SerialPort.WatchChar = '\n'; // May 2022 WatchChar event didn't fire github issue https://github.com/nanoframework/Home/issues/1035
 
 #if SERIAL_ASYNC_READ
-					_SerialPort.DataReceived += SerialDevice_DataReceived;
+               _SerialPort.DataReceived += SerialDevice_DataReceived;
 #endif
 
 					_SerialPort.Open();
@@ -116,16 +124,18 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 					{
 						string atCommand;
 						atCommand = "AT+VER=?";
-						//atCommand = "AT+SN=?"; // Empty response?
-						//atCommand = "AT+HWMODEL=?";
-						//atCommand = "AT+HWID=?";
-						//atCommand = "AT+DEVEUI=?";
-						//atCommand = "AT+APPEUI=?";
-						//atCommand = "AT+APPKEY=?";
-						//atCommand = "ATR";
-						//atCommand = "AT+SLEEP=4000";
-						//atCommand = "AT+ATM";
-						Debug.WriteLine("");
+                  //atCommand = "AT+SN=?"; // Empty response?
+                  //atCommand = "AT+HWMODEL=?";
+                  //atCommand = "AT+HWID=?";
+                  //atCommand = "AT+DEVEUI=?";
+                  //atCommand = "AT+APPEUI=?";
+                  //atCommand = "AT+APPKEY=?";
+                  //atCommand = "ATR";
+                  //atCommand = "AT+SLEEP=4000";
+                  //atCommand = "AT+ATM";
+                  //atCommand = "AT+NWM=1";
+                  atCommand = "AT?";
+                  Debug.WriteLine("");
 						Debug.WriteLine($"{DateTime.UtcNow:hh:mm:ss} {i} TX:{atCommand} bytes:{atCommand.Length}--------------------------------");
 						_SerialPort.WriteLine(atCommand);
 
