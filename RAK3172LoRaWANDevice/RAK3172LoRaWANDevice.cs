@@ -237,19 +237,6 @@ namespace devMobile.IoT.LoRaWAN
 			// clear out the input buffer.
 			serialDevice.ReadExisting();
 
-			// Set the Working mode to LoRaWAN, not/never going todo P2P with this library.
-#if DIAGNOSTICS
-			Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+NWM=1");
-#endif
-			Result result = SendCommand("Current Work Mode: LoRaWAN.", "AT+NWM=1", CommandTimeoutDefault);
-			if (result != Result.Success)
-			{
-#if DIAGNOSTICS
-				Debug.WriteLine($" {DateTime.UtcNow:hh:mm:ss} AT+NWM=1 failed {result}");
-#endif
-				return result;
-			}
-
 			return Result.Success;
 		}
 
@@ -775,7 +762,7 @@ namespace devMobile.IoT.LoRaWAN
 
 			serialDevice.WriteLine(command);
 
-			this.ATCommandResponseExpectedEvent.Reset();
+         this.ATCommandResponseExpectedEvent.Reset();
 
 			if (!this.ATCommandResponseExpectedEvent.WaitOne((int)timeout.TotalMilliseconds, false))
 			{
