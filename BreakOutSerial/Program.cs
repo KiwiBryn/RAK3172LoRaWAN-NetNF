@@ -19,7 +19,7 @@
 //#define SERIAL_THREADED_READ
 //#define ST_STM32F769I_DISCOVERY      // nanoff --target ST_STM32F769I_DISCOVERY --update 
 //#define SPARKFUN_ESP32_THING_PLUS   // nanoff --platform esp32 --serialport COM4 --update
-#define RAK_WISBLOCK_RAK2305 // nanoff --update --target ESP32_PSRAM_REV0 --serialport COM4
+#define RAK_WISBLOCK_RAK2305 // nanoff --update --platform esp32 --serialport COM4 --update
 // May 2022 Still experiencing issues with ComPort assignments
 //#define NETDUINO3_WIFI   // nanoff --target NETDUINO3_WIFI --update
 //#define ST_NUCLEO64_F091RC // nanoff --target ST_NUCLEO64_F091RC --update 
