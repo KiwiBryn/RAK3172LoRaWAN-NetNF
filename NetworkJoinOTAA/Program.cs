@@ -15,8 +15,9 @@
 //
 // https://docs.rakwireless.com/RUI3/Serial-Operating-Modes/AT-Command-Manual/#overview
 //---------------------------------------------------------------------------------
-#define ST_STM32F769I_DISCOVERY      // nanoff --target ST_STM32F769I_DISCOVERY --update 
-//#define ESP32_WROOM   //nanoff --target ESP32_REV0 --serialport COM17 --update
+//#define ST_STM32F769I_DISCOVERY      // nanoff --target ST_STM32F769I_DISCOVERY --update 
+#define RAK_WISBLOCK_RAK2305 // nanoff --update --platform esp32 --serialport COM4 --update
+
 
 namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 {
@@ -24,14 +25,14 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 	using System.Diagnostics;
 	using System.IO.Ports;
 	using System.Threading;
-#if ESP32_WROOM
-	using global::nanoFramework.Hardware.Esp32; //need NuGet nanoFramework.Hardware.Esp32
+#if RAK_WISBLOCK_RAK2305
+    using global::nanoFramework.Hardware.Esp32; //need NuGet nanoFramework.Hardware.Esp32
 #endif
 
 	public class Program
 	{
-#if ESP32_WROOM
-		private const string SerialPortId = "COM2";
+#if RAK_WISBLOCK_RAK2305
+        private const string SerialPortId = "COM2";
 #endif
 #if ST_STM32F769I_DISCOVERY
 		private const string SerialPortId = "COM6";
@@ -48,9 +49,9 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 
 			try
 			{
-				// set GPIO functions for COM2 (this is UART1 on ESP32)
-#if ESP32_WROOM
-				Configuration.SetPinFunction(Gpio.IO17, DeviceFunction.COM2_TX);
+                // set GPIO functions for COM2 (this is UART1 on ESP32)
+#if RAK_WISBLOCK_RAK2305
+                Configuration.SetPinFunction(Gpio.IO17, DeviceFunction.COM2_TX);
 				Configuration.SetPinFunction(Gpio.IO16, DeviceFunction.COM2_RX);
 #endif
 
