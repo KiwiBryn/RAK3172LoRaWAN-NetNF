@@ -17,9 +17,9 @@
 //---------------------------------------------------------------------------------
 #define SERIAL_ASYNC_READ
 //#define SERIAL_THREADED_READ
-#define ST_STM32F769I_DISCOVERY      // nanoff --target ST_STM32F769I_DISCOVERY --update 
+//#define ST_STM32F769I_DISCOVERY      // nanoff --target ST_STM32F769I_DISCOVERY --update 
 //#define SPARKFUN_ESP32_THING_PLUS   // nanoff --platform esp32 --serialport COM4 --update
-//#define RAK_WISBLOCK_RAK2305 // nanoff --update --target ESP32_PSRAM_REV0 --serialport COM4
+#define RAK_WISBLOCK_RAK2305 // nanoff --update --target ESP32_PSRAM_REV0 --serialport COM4
 // May 2022 Still experiencing issues with ComPort assignments
 //#define NETDUINO3_WIFI   // nanoff --target NETDUINO3_WIFI --update
 //#define ST_NUCLEO64_F091RC // nanoff --target ST_NUCLEO64_F091RC --update 
@@ -49,9 +49,6 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 #endif
 #if NETDUINO3_WIFI
       private const string SerialPortId = "COM3";
-#endif
-#if MBN_QUAIL
-      private const string SpiBusId = "";
 #endif
 #if ST_NUCLEO64_F091RC
       private const string SerialPortId = "";
@@ -124,18 +121,19 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 					{
 						string atCommand;
 						atCommand = "AT+VER=?";
-                  //atCommand = "AT+SN=?"; // Empty response?
-                  //atCommand = "AT+HWMODEL=?";
-                  //atCommand = "AT+HWID=?";
-                  //atCommand = "AT+DEVEUI=?";
-                  //atCommand = "AT+APPEUI=?";
-                  //atCommand = "AT+APPKEY=?";
-                  //atCommand = "ATR";
-                  //atCommand = "AT+SLEEP=4000";
-                  //atCommand = "AT+ATM";
-                  //atCommand = "AT+NWM=1";
-                  atCommand = "AT?";
-                  Debug.WriteLine("");
+						//atCommand = "AT+SN=?"; // Empty response?
+						//atCommand = "AT+HWMODEL=?";
+						//atCommand = "AT+HWID=?";
+						//atCommand = "AT+DEVEUI=?";
+						//atCommand = "AT+APPEUI=?";
+						//atCommand = "AT+APPKEY=?";
+						//atCommand = "ATR";
+						//atCommand = "AT+SLEEP=4000";
+						//atCommand = "AT+ATM";
+						//atCommand = "AT+NWM=1";
+						//atCommand = "AT?";
+						//atCommand = "+++";
+						Debug.WriteLine("");
 						Debug.WriteLine($"{DateTime.UtcNow:hh:mm:ss} {i} TX:{atCommand} bytes:{atCommand.Length}--------------------------------");
 						_SerialPort.WriteLine(atCommand);
 
