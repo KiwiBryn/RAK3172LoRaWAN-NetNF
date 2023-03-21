@@ -51,18 +51,18 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 			{
                 // set GPIO functions for COM2 (this is UART1 on ESP32)
 #if RAK_WISBLOCK_RAK2305
-                Configuration.SetPinFunction(Gpio.IO17, DeviceFunction.COM2_TX);
-				Configuration.SetPinFunction(Gpio.IO16, DeviceFunction.COM2_RX);
+                Configuration.SetPinFunction(Gpio.IO21, DeviceFunction.COM2_TX);
+                Configuration.SetPinFunction(Gpio.IO19, DeviceFunction.COM2_RX);
 #endif
 
-				Debug.Write("Ports:");
+                Debug.Write("Ports:");
 				foreach (string port in SerialPort.GetPortNames())
 				{
 					Debug.Write($" {port}");
 				}
 				Debug.WriteLine("");
 
-				using (SerialPort serialPort = new SerialPort(SerialPortId))
+                using (SerialPort serialPort = new SerialPort(SerialPortId))
 				{
 					// set parameters
 					serialPort.BaudRate = 115200;
