@@ -24,7 +24,7 @@
 //---------------------------------------------------------------------------------
 //#define ST_STM32F769I_DISCOVERY      // nanoff --target ST_STM32F769I_DISCOVERY --update 
 //#define  SPARKFUN_ESP32_THING_PLUS  // nanoff --platform esp32 --serialport COM4 --update
-//#define RAK_WISBLOCK_RAK2305 // nanoff --update --target ESP32_PSRAM_REV0 --serialport COM4
+#define RAK_WISBLOCK_RAK2305 // nanoff --update --platform esp32 --serialport COM4
 //#define DEVICE_DEVEUI_SET
 //#define FACTORY_RESET
 //#define PAYLOAD_BCD
@@ -58,7 +58,7 @@ namespace devMobile.IoT.LoRaWAN
 #if RAK_WISBLOCK_RAK2305
 		private const string SerialPortId = "COM2";
 #endif
-      private const string Band = "8-1";
+		private const string Band = "8-1";
 		private static readonly TimeSpan JoinTimeOut = new TimeSpan(0, 0, 10);
 		private static readonly TimeSpan SendTimeout = new TimeSpan(0, 0, 10);
 #if SLEEP
@@ -94,7 +94,7 @@ namespace devMobile.IoT.LoRaWAN
             Configuration.SetPinFunction(Gpio.IO19, DeviceFunction.COM2_RX);
 #endif
 
-            Debug.Write("Ports:");
+				Debug.Write("Ports:");
 				foreach (string port in SerialPort.GetPortNames())
 				{
 					Debug.Write($" {port}");
