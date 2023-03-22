@@ -38,7 +38,7 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 		private const string SerialPortId = "COM6";
 #endif
 		private const string DevEui = "...";
-		private const string AppEui = "ACACD26877217328";
+		private const string AppEui = "...";
 		private const string AppKey = "...";
 		private const byte MessagePort = 1;
 		private const string Payload = "A0EEE456D02AFF4AB8BAFD58101D2A2A"; // Hello LoRaWAN
@@ -83,7 +83,7 @@ namespace devMobile.IoT.LoRaWAN.nanoFramework.RAK3172
 
 					// Set the devEUI
 					Console.WriteLine("Set Dev Eui");
-					serialPort.WriteLine($"AT+DEVEUI={DevEui}");
+					//serialPort.WriteLine($"AT+DEVEUI={DevEui}");
 
 					// Set the Working mode to LoRaWAN
 					Console.WriteLine("Set Work mode");
